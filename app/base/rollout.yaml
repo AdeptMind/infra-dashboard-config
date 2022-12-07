@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: app
+spec:
+  replicas: 2
+  strategy:
+    canary:
+      canaryService: infra-dashboard-canary
+      stableService: infra-dashboard-stable
+      trafficRouting:
+        istio:
+          virtualService:
+            name: infra-dashboard-vsvc
+            routes:
+            - primary
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause: {duration: 20}
+      - setWeight: 60
+      - pause: {duration: 20}
+      - setWeight: 80
+      - pause: {duration: 20}
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: app
+        ports:
+        - name: http
+          containerPort: 9090
+          protocol: TCP
+        resources:
+          requests:
+            memory: 32Mi
+            cpu: 5m
