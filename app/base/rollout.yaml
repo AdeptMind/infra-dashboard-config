@@ -42,10 +42,10 @@ spec:
               name: infra-dashboard-configmap
               key: REACT_APP_APP_DOMAIN
         - name: REACT_APP_API_DOMAIN
-        valueFrom:
-          configMapKeyRef:
-            name: infra-dashboard-configmap
-            key: REACT_APP_API_DOMAIN
+          valueFrom:
+            configMapKeyRef:
+              name: infra-dashboard-configmap
+              key: REACT_APP_API_DOMAIN
         ports:
         - name: http
           containerPort: 9090
