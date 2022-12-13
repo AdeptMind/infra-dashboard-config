@@ -45,6 +45,7 @@ spec:
         volumeMounts:
           - name: config
             mountPath: /app/.env
+            subPath: env_file
       volumes:
       - name: config
         configMap:
