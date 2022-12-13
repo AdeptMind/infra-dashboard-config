@@ -42,3 +42,10 @@ spec:
           requests:
             memory: 32Mi
             cpu: 5m
+        volumeMounts:
+          - name: config
+            mountPath: /app/.env
+      volumes:
+      - name: config
+        configMap:
+          name: infra-dashboard-configmap
