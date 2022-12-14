@@ -28,7 +28,4 @@ spec:
             port:
               number: 9090
         pathType: ImplementationSpecific
-  tls:
-  - hosts:
-    - dashboard.retail.adeptmind.net
-    - dashboard.infra.adeptmind.net
+
