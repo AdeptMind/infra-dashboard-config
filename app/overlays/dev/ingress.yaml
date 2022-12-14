@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     acme.cert-manager.io/http01-edit-in-place: "true"
+    kubernetes.io/ingress.class: haproxy
     cert-manager.io/cluster-issuer: letsencrypt
   finalizers:
   - networking.gke.io/ingress-finalizer-V2
