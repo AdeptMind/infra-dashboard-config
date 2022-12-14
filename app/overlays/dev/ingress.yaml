@@ -38,10 +38,9 @@ spec:
   - host: test.retail.adeptmind.net
     http:
       paths:
-      - path: /
         pathType: ImplementationSpecific
-        backend:
-          service:
-            name: infra-dashboard-svc
-            port:
-              number: 9090
+      - backend:
+        service:
+          name: infra-dashboard-svc
+          port:
+            number: 9090
