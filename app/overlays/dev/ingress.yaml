@@ -40,5 +40,7 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: infra-dashboard-svc
-          servicePort: 9090
+          service:
+            name: infra-dashboard-svc
+            port:
+              number: 9090
