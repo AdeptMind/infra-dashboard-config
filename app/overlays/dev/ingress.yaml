@@ -17,7 +17,7 @@ spec:
           service:
             name: infra-dashboard-svc
             port:
-              number: 80
+              number: 9090
         pathType: ImplementationSpecific
   - host: dashboard.retail.adeptmind.net
     http:
@@ -26,7 +26,7 @@ spec:
           service:
             name: infra-dashboard-svc
             port:
-              number: 80
+              number: 9090
         pathType: ImplementationSpecific
   tls:
   - hosts:
