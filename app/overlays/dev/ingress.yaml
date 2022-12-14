@@ -6,7 +6,6 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt
   finalizers:
   - networking.gke.io/ingress-finalizer-V2
-  generation: 1
   name: infra-dashboard-ingress
 spec:
   rules:
