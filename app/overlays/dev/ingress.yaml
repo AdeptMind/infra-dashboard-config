@@ -45,3 +45,13 @@ spec:
             name: infra-dashboard-svc
             port:
               number: 9090
+  - host: dashboard.infra.adeptmind.net
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: infra-dashboard-svc
+            port:
+              number: 9090
