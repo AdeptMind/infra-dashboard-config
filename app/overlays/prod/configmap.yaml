@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: infra-dashboard-configmap
 data:
-  REACT_APP_API_DOMAIN: http://35.239.39.184:8000
+  REACT_APP_API_DOMAIN: http://35.222.63.0:8000
   REACT_APP_APP_DOMAIN: http://34.27.226.16:9090
