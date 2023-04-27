@@ -1,28 +1,10 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: app
 spec:
   replicas: 2
-  strategy:
-    canary:
-      canaryService: infra-dashboard-canary
-      stableService: infra-dashboard-stable
-      trafficRouting:
-        istio:
-          virtualService:
-            name: infra-dashboard-vsvc
-            routes:
-            - primary
-      steps:
-      - setWeight: 20
-      - pause: {}
-      - setWeight: 40
-      - pause: {duration: 20}
-      - setWeight: 60
-      - pause: {duration: 20}
-      - setWeight: 80
-      - pause: {duration: 20}
   revisionHistoryLimit: 2
   selector:
     matchLabels:
@@ -35,22 +17,26 @@ spec:
       containers:
       - name: app
         image: gcr.io/retail-364515/infra-dashboard
-        env:
-        - name: REACT_APP_APP_DOMAIN
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-configmap
-              key: REACT_APP_APP_DOMAIN
-        - name: REACT_APP_API_DOMAIN
-          valueFrom:
-            configMapKeyRef:
-              name: infra-dashboard-configmap
-              key: REACT_APP_API_DOMAIN
         ports:
         - name: http
-          containerPort: 9090
+          containerPort: 8080
           protocol: TCP
         resources:
           requests:
             memory: 32Mi
             cpu: 5m
+  strategy:
+    canary:
+      canaryService: canary
+      stableService: stable
+      trafficRouting:
+        istio:
+          virtualService:
+            name: istio-rollout-vsvc
+            routes:
+            - primary
+      steps:
+      - setWeight: 20
+      - pause: {}         # pause indefinitely
+      - setWeight: 80
+      - pause: {duration: 20s}
