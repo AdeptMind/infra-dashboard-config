@@ -13,3 +13,10 @@ spec:
       protocol: HTTP
     hosts:
     - dashboard.infra.adeptmind.net
+    - infra-dashboard.adeptmind.net
+  - port:
+      name: https
+      number: 443
+      protocol: HTTP
+    hosts:
+    - infra-dashboard.adeptmind.net
