@@ -4,9 +4,8 @@ metadata:
   name: istio-rollout-vsvc
 spec:
   gateways:
-  - istio-rollout-gateway
+  - app-gateway
   hosts:
-  - dashboard.infra.adeptmind.net
   - infra-dashboard.adeptmind.net
   - app
   http:
