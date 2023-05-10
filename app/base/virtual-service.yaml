@@ -6,7 +6,6 @@ spec:
   gateways:
   - istio-rollout-gateway
   hosts:
-  - dashboard.infra.adeptmind.net
   - infra-dashboard.adeptmind.net
   - app
   http:
